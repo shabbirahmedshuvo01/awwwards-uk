@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050507;
+  --foreground: #ffffff;
+  --secondary: #131318;
+  --border: #1f1f26;
+  --muted-foreground: #a1a1aa;
+
+  /* Accent token matching reference (mapped to gold token) */
+  --gold: #0070f3;
+  --gold-foreground: #ffffff;
+
+  --surface-card: #0c0c10;
+  --surface-elevated: #131318;
+  --surface-subtle: #181820;
+
+  --accent-blue: #0070f3;
+  --accent-blue-hover: #1e80f8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-surface-card: var(--surface-card);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-subtle: var(--surface-subtle);
+
+  --font-display: var(--font-playfair), "Playfair Display", Georgia, Cambria, serif;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, Cambria, serif;
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #050507;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #050507;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+::selection {
+  background-color: #0070f3;
+  color: #ffffff;
+}
+
+/* Custom utilities for the awards template */
+.label-xs {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem; /* 11px */
+  line-height: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.glass-panel {
+  background-color: rgba(10, 10, 14, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e4e4e7;
+}
+
+/* Minimalist dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050507;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
