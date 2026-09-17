@@ -10,7 +10,7 @@ export default function WorkMedia({ work }: WorkMediaProps) {
   return (
     <section aria-label="Project Visual Gallery" className="space-y-3">
       {/* Primary Cinematic Showcase Container */}
-      <div className="relative w-full aspect-[16/10] sm:aspect-[21/9] min-h-[300px] sm:min-h-[460px] lg:min-h-[540px] rounded-xl sm:rounded-2xl overflow-hidden border border-zinc-800/80 bg-[#070709] shadow-2xl">
+      <div className="relative w-full aspect-16/10 sm:aspect-21/9 min-h-75 sm:min-h-115 lg:min-h-135 rounded-xl sm:rounded-2xl overflow-hidden border border-zinc-800/80 bg-[#070709] shadow-2xl">
         <Image
           src={work.imageUrl}
           alt={`${work.title} showcase by ${work.creator}`}
@@ -19,7 +19,7 @@ export default function WorkMedia({ work }: WorkMediaProps) {
           className="object-cover object-center transition-transform duration-700 ease-out"
         />
         {/* Subtle bottom gradient to enhance depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
         {/* Subtle overlay watermark info in corner */}
         <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 pointer-events-none z-10 hidden sm:block">

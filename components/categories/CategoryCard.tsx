@@ -28,7 +28,7 @@ export default function CategoryCard({
     >
       {/* Visual Header / Representative Image */}
       {imageUrl && (
-        <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#070709]">
+        <div className="relative w-full aspect-video overflow-hidden bg-[#070709]">
           <div className="relative block h-full w-full">
             <Image
               src={imageUrl}
@@ -37,7 +37,7 @@ export default function CategoryCard({
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c10] via-black/40 to-transparent opacity-90 group-hover:opacity-75 transition-opacity" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#0c0c10] via-black/40 to-transparent opacity-90 group-hover:opacity-75 transition-opacity" />
           </div>
 
           {/* Floating Top Header Badges */}

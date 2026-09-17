@@ -97,7 +97,7 @@ export default function WorkSidebar({
             <span className="text-zinc-500 text-[11px] uppercase tracking-wider">
               Context / Client
             </span>
-            <span className="text-zinc-300 text-right max-w-[180px] truncate">
+            <span className="text-zinc-300 text-right max-w-45 truncate">
               {work.clientOrContext}
             </span>
           </div>

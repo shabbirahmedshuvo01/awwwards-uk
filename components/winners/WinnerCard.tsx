@@ -16,7 +16,7 @@ export default function WinnerCard({ work }: WinnerCardProps) {
   return (
     <article className="group flex flex-col rounded-xl border border-zinc-800/80 bg-[#0c0c10] overflow-hidden transition-all duration-300 hover:border-zinc-600 shadow-sm">
       {/* Visual Media Container */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#070709]">
+      <div className="relative w-full aspect-16/10 overflow-hidden bg-[#070709]">
         <Link
           href={`/work/${work.slug}`}
           className="relative block h-full w-full"
@@ -29,7 +29,7 @@ export default function WinnerCard({ work }: WinnerCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent opacity-85 group-hover:opacity-75 transition-opacity" />
+          <div className="absolute inset-0 bg-linear-to-t from-black via-black/35 to-transparent opacity-85 group-hover:opacity-75 transition-opacity" />
         </Link>
 
         {/* Floating Top Badges */}
@@ -55,8 +55,8 @@ export default function WinnerCard({ work }: WinnerCardProps) {
         <div className="absolute left-3.5 bottom-3.5 z-10 pointer-events-none">
           <span
             className={`font-mono text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full backdrop-blur-md border ${isTopTier
-                ? 'bg-black/80 border-[#0070f3]/50 text-[#38bdf8] font-semibold'
-                : 'bg-black/65 border-white/10 text-zinc-300'
+              ? 'bg-black/80 border-[#0070f3]/50 text-[#38bdf8] font-semibold'
+              : 'bg-black/65 border-white/10 text-zinc-300'
               }`}
           >
             {work.recognition}
@@ -82,7 +82,7 @@ export default function WinnerCard({ work }: WinnerCardProps) {
           <div className="flex flex-col">
             <Link
               href={`/profile/${work.creatorSlug}`}
-              className="text-zinc-200 hover:text-[#0070f3] transition-colors uppercase tracking-wider font-medium truncate max-w-[170px] sm:max-w-[200px]"
+              className="text-zinc-200 hover:text-[#0070f3] transition-colors uppercase tracking-wider font-medium truncate max-w-42.5 sm:max-w-50"
             >
               {work.creator}
             </Link>
