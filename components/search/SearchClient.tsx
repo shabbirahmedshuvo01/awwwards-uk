@@ -87,6 +87,7 @@ export default function SearchClient() {
             <input
               type="text"
               autoFocus
+              aria-label="Search by project name, studio, city, or discipline"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search by project name, studio, city, or discipline..."
@@ -113,8 +114,8 @@ export default function SearchClient() {
                 type="button"
                 onClick={() => setQuery(tag)}
                 className={`rounded-full border px-3 py-1 text-xs font-mono transition-colors cursor-pointer ${query.toLowerCase() === tag.toLowerCase()
-                    ? 'border-[#0070f3] bg-[#0070f3]/10 text-white'
-                    : 'border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'
+                  ? 'border-[#0070f3] bg-[#0070f3]/10 text-white'
+                  : 'border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'
                   }`}
               >
                 {tag}
