@@ -48,15 +48,15 @@ const REGIONAL_HUBS: RegionalHub[] = [
   },
   {
     city: 'St Ives',
-    focus: 'Analog Landscapes & Craft',
-    studioName: 'Studio Morven',
-    studioSlug: 'studio-morven',
+    focus: 'Wood-fired Ceramics & Studio Glaze',
+    studioName: 'Gorse Craft Co.',
+    studioSlug: 'gorse-craft-co',
   },
   {
     city: 'Leeds',
-    focus: 'Letterpress & Graphic Systems',
-    studioName: 'Studio Folk',
-    studioSlug: 'studio-folk',
+    focus: 'Typography & Kinetic Motion Systems',
+    studioName: 'Studio Form',
+    studioSlug: 'studio-form',
   },
 ];
 
