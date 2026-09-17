@@ -79,7 +79,7 @@ export default function Footer() {
             </p>
             <div className="pt-1">
               <Button
-                href="/#submit"
+                href="/submit"
                 variant="primary"
                 size="md"
                 className="font-mono text-xs tracking-wider uppercase font-semibold px-6 py-3"

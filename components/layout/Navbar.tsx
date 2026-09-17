@@ -9,10 +9,10 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'SHOWCASE', href: '/#showcase' },
+    { label: 'DISCOVER', href: '/discover' },
+    { label: 'WINNERS', href: '/winners' },
+    { label: 'CATEGORIES', href: '/categories' },
     { label: 'NOMINEES', href: '/#nominees' },
-    { label: 'DIRECTORY', href: '/#directory' },
-    { label: 'JURY', href: '/#jury' },
     { label: 'ABOUT', href: '/#about' },
   ];
 
@@ -47,8 +47,8 @@ export default function Navbar() {
         {/* Right: Search & Action */}
         <div className="hidden md:flex items-center gap-4">
           {/* Quick search shortcut button */}
-          <button
-            type="button"
+          <Link
+            href="/search"
             className="flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/60 px-3.5 py-1.5 text-xs text-zinc-400 hover:border-zinc-700 hover:text-zinc-200 transition-colors"
           >
             <svg
@@ -68,11 +68,11 @@ export default function Navbar() {
             <kbd className="rounded border border-zinc-700 bg-zinc-800/80 px-1.5 py-0.5 text-[10px] font-mono text-zinc-400">
               ⌘K
             </kbd>
-          </button>
+          </Link>
 
           {/* Submit Work Blue Pill */}
           <Button
-            href="/#submit"
+            href="/submit"
             variant="primary"
             size="sm"
             className="font-mono text-[11px] uppercase tracking-wider font-semibold shadow-md shadow-blue-500/10"
@@ -117,7 +117,7 @@ export default function Navbar() {
             ))}
             <div className="pt-4 border-t border-zinc-800">
               <Button
-                href="/#submit"
+                href="/submit"
                 variant="primary"
                 size="md"
                 className="w-full justify-center font-mono text-xs tracking-wider uppercase font-semibold"
