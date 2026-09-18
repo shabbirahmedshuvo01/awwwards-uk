@@ -4,46 +4,78 @@ import { notFound } from 'next/navigation';
 import Container from '@/components/ui/Container';
 import ProfileHeader from '@/components/profile/ProfileHeader';
 import ProfileWorkGrid from '@/components/profile/ProfileWorkGrid';
-import { getAllWorks, getWorksByCreator } from '@/data/works';
+import ProfileRecognition from '@/components/profile/ProfileRecognition';
+import ProfileDetails from '@/components/profile/ProfileDetails';
+import ProfileCta from '@/components/profile/ProfileCta';
+import { getAllProfiles, getProfileBySlug } from '@/data/profiles';
+import { getWorksByCreator } from '@/data/works';
 
 interface ProfilePageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const works = getAllWorks();
-  const creatorSlugs = Array.from(new Set(works.map((w) => w.creatorSlug)));
-  return creatorSlugs.map((slug) => ({ slug }));
+  const profiles = getAllProfiles();
+  return profiles.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: ProfilePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ProfilePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const works = getWorksByCreator(slug);
-  if (works.length === 0) return { title: 'Studio Not Found — aWWWards.co.uk' };
+  const profile = getProfileBySlug(slug);
+  if (!profile) return { title: 'Practice Not Found — aWWWards.co.uk' };
 
-  const studio = works[0];
+  const works = getWorksByCreator(slug);
+  const ogImage =
+    works.length > 0 ? works[0].imageUrl : '/images/home/hero-feature.jpg';
+
   return {
-    title: `${studio.creator} — UK Creative Profile — aWWWards.co.uk`,
-    description: `Explore recognised works and projects by ${studio.creator} based in ${studio.location}.`,
+    metadataBase: new URL('https://awwwards.co.uk'),
+    title: `${profile.name} — UK Creative Practice — aWWWards.co.uk`,
+    description: profile.bio,
+    openGraph: {
+      title: `${profile.name} | aWWWards.co.uk`,
+      description: profile.bio,
+      images: [
+        {
+          url: ogImage,
+          alt: profile.name,
+        },
+      ],
+    },
   };
 }
 
 export default async function ProfileDetailPage({ params }: ProfilePageProps) {
   const { slug } = await params;
-  const studioWorks = getWorksByCreator(slug);
+  const profile = getProfileBySlug(slug);
 
-  if (studioWorks.length === 0) {
+  // 404 is strictly determined by whether the profile exists in data/profiles.ts
+  if (!profile) {
     notFound();
   }
 
-  const studio = studioWorks[0];
+  const works = getWorksByCreator(slug);
 
   return (
-    <div className="min-h-screen bg-black text-white pt-12 pb-24">
-      <Container size="wide" className="space-y-12">
-        <ProfileHeader studio={studio} worksCount={studioWorks.length} />
-        <ProfileWorkGrid works={studioWorks} />
+    <main className="min-h-screen bg-black text-white pt-8 sm:pt-12 pb-24">
+      <Container size="wide" className="space-y-16 sm:space-y-20">
+        {/* Profile Header & Studio Introduction */}
+        <ProfileHeader profile={profile} worksCount={works.length} />
+
+        {/* Portfolio Showcase Grid */}
+        <ProfileWorkGrid works={works} creatorName={profile.name} />
+
+        {/* Official Recognitions & Accreditations (if works have awards) */}
+        <ProfileRecognition works={works} />
+
+        {/* Studio Specifications & Geographic Hub */}
+        <ProfileDetails profile={profile} works={works} />
+
+        {/* Closing Nomination CTA */}
+        <ProfileCta />
       </Container>
-    </div>
+    </main>
   );
 }

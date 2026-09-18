@@ -24,7 +24,7 @@ export default function WorkSidebar({
       {/* Top Section Header */}
       <div className="border-b border-zinc-800 pb-3 flex items-center justify-between">
         <h3 className="uppercase tracking-widest text-zinc-400 font-semibold text-[11px]">
-          ACCREDITATION RECORD
+          {work.status === 'nominated' ? 'NOMINATION RECORD' : 'ACCREDITATION RECORD'}
         </h3>
         <span className="text-zinc-600 text-[10px]">INDEX #{work.id}</span>
       </div>
@@ -34,27 +34,37 @@ export default function WorkSidebar({
         {/* Status / Tier */}
         <div className="pt-3 first:pt-0 flex items-center justify-between">
           <span className="text-zinc-500 text-[11px] uppercase tracking-wider">
-            Recognition
+            {work.status === 'nominated' ? 'Status' : 'Recognition'}
           </span>
           <Badge
             variant={
-              work.recognition === 'Category Winner' ? 'accent' : 'dark'
+              work.status === 'nominated'
+                ? 'dark'
+                : work.recognition === 'Category Winner'
+                  ? 'accent'
+                  : 'dark'
             }
             size="sm"
             className="font-mono text-[10px]"
           >
-            {work.recognition}
+            {work.status === 'nominated' ? 'Under Review' : work.recognition}
           </Badge>
         </div>
 
-        {/* Jury Rating */}
+        {/* Jury Rating / Review Status */}
         <div className="pt-3 flex items-center justify-between">
           <span className="text-zinc-500 text-[11px] uppercase tracking-wider">
-            Jury Evaluation
+            {work.status === 'nominated' ? 'Review Status' : 'Jury Evaluation'}
           </span>
-          <span className="text-[#38bdf8] font-bold text-sm font-mono">
-            ★ {work.score} <span className="text-zinc-600 text-xs font-normal">/ 10</span>
-          </span>
+          {work.status === 'nominated' ? (
+            <span className="text-[#38bdf8] font-medium text-xs font-mono">
+              Under Editorial Review
+            </span>
+          ) : (
+            <span className="text-[#38bdf8] font-bold text-sm font-mono">
+              ★ {work.score} <span className="text-zinc-600 text-xs font-normal">/ 10</span>
+            </span>
+          )}
         </div>
 
         {/* Studio / Creator */}

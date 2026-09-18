@@ -12,8 +12,8 @@ export default function Navbar() {
     { label: 'DISCOVER', href: '/discover' },
     { label: 'WINNERS', href: '/winners' },
     { label: 'CATEGORIES', href: '/categories' },
-    { label: 'NOMINEES', href: '/#nominees' },
-    { label: 'ABOUT', href: '/#about' },
+    { label: 'NOMINEES', href: '/nominees' },
+    { label: 'ABOUT', href: '/about' },
   ];
 
   return (

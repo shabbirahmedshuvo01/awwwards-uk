@@ -8,10 +8,10 @@ import RecognitionFilters, { RecognitionLevel } from './RecognitionFilters';
 import WinnersGrid from './WinnersGrid';
 import DisciplineRecognition from './DisciplineRecognition';
 import WinnersCta from './WinnersCta';
-import { getAllWorks, Work } from '@/data/works';
+import { getAccreditedWorks, Work } from '@/data/works';
 
 export default function WinnersClient() {
-  const allWorks = useMemo(() => getAllWorks(), []);
+  const allWorks = useMemo(() => getAccreditedWorks(), []);
 
   const [selectedRecognition, setSelectedRecognition] =
     useState<RecognitionLevel>('All Recognition');
