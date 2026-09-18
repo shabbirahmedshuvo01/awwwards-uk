@@ -47,9 +47,15 @@ export default function DiscoveryCard({ work, priority = false }: DiscoveryCardP
             </Link>
           </div>
 
-          <Badge variant="rating" size="sm" className="pointer-events-auto text-[10px]">
-            ★ {work.score}
-          </Badge>
+          {work.score ? (
+            <Badge variant="rating" size="sm" className="pointer-events-auto text-[10px]">
+              ★ {work.score}
+            </Badge>
+          ) : (
+            <Badge variant="dark" size="sm" className="pointer-events-auto text-[10px] text-zinc-300 border-white/10">
+              Under Review
+            </Badge>
+          )}
         </div>
 
         {/* Recognition Pill on Image Bottom */}

@@ -5,7 +5,7 @@ export default function CategoriesHero() {
   return (
     <div className="space-y-6 pt-2 pb-4">
       {/* Navigation Breadcrumbs */}
-      <nav className="flex items-center gap-2 font-mono text-xs text-zinc-500">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-mono text-xs text-zinc-500">
         <Link href="/" className="hover:text-white transition-colors">
           Home
         </Link>

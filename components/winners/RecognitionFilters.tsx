@@ -61,7 +61,7 @@ export default function RecognitionFilters({
           Recognition Tier:
         </span>
 
-        <div className="flex items-center gap-2 overflow-x-auto pb-1.5 sm:pb-0 no-scrollbar font-mono text-xs -mx-1 px-1">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1.5 sm:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden font-mono text-xs -mx-1 px-1">
           {RECOGNITION_LEVELS.map((level) => {
             const isActive = selectedRecognition === level;
             return (

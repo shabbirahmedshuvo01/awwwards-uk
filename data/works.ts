@@ -8,6 +8,8 @@ export type RecognitionTier =
   | 'Category Winner'
   | 'Honorable Mention';
 
+export type WorkStatus = 'nominated' | 'accredited';
+
 export interface Work {
   id: string;
   title: string;
@@ -31,6 +33,7 @@ export interface Work {
   clientOrContext: string;
   appreciationCount: number;
   publishedAt: string;
+  status?: WorkStatus;
 }
 
 export const LOCATIONS = [
@@ -371,8 +374,99 @@ export const DISCOVERY_WORKS: Work[] = [
   },
 ];
 
+// ============================================================================
+// MOCK / DEMO NOMINEE SUBMISSIONS FOR FRONTEND FLOW
+// Works currently undergoing curatorial review.
+// No jury scores or review cycles are invented.
+// ============================================================================
+export const DEMO_NOMINEE_WORKS: Work[] = [
+  {
+    id: 'nominee-1',
+    title: 'Prismatic Wave Study',
+    slug: 'prismatic-wave-study',
+    creator: 'Kroma Atelier',
+    creatorSlug: 'kroma-atelier',
+    creatorRole: 'Creative Code & Spatial Art',
+    location: 'Glasgow, UK',
+    city: 'Glasgow',
+    category: 'Digital Art',
+    categorySlug: 'digital-art',
+    recognition: 'Featured',
+    year: '2026',
+    score: '',
+    imageUrl: '/images/home/work-1.jpg',
+    aspectRatio: 'landscape',
+    span: 'medium',
+    summary: 'An exploratory real-time shader study investigating optical dispersion and glass caustic simulations.',
+    description: 'A digital installation study modeling liquid refraction and caustic light dispersion in browser environments, currently submitted for curatorial review.',
+    tags: ['Shader Art', 'WebGL', 'Glasgow', 'Demo Nomination'],
+    clientOrContext: 'Independent Studio Study',
+    appreciationCount: 420,
+    publishedAt: '2026-03-16',
+    status: 'nominated',
+  },
+  {
+    id: 'nominee-2',
+    title: 'Kinetic Canvas Sandbox',
+    slug: 'kinetic-canvas-sandbox',
+    creator: 'Kinetic Engine',
+    creatorSlug: 'kinetic-engine',
+    creatorRole: 'Digital Engineering & WebOS',
+    location: 'Bristol, UK',
+    city: 'Bristol',
+    category: 'Web Design',
+    categorySlug: 'web-design',
+    recognition: 'Featured',
+    year: '2026',
+    score: '',
+    imageUrl: '/images/home/hero-feature.jpg',
+    aspectRatio: 'landscape',
+    span: 'medium',
+    summary: 'A sub-millisecond 2D physics engine and canvas prototyping environment engineered in Bristol.',
+    description: 'Engineered with WebAssembly and low-overhead Canvas bindings, this prototype explores browser performance limits for interactive creative tools.',
+    tags: ['WebAssembly', 'Canvas API', 'Bristol Tech', 'Demo Nomination'],
+    clientOrContext: 'Open Engineering Prototype',
+    appreciationCount: 380,
+    publishedAt: '2026-03-14',
+    status: 'nominated',
+  },
+  {
+    id: 'nominee-3',
+    title: 'Heritage Mill Acoustic Chamber',
+    slug: 'heritage-mill-acoustic-chamber',
+    creator: 'Resonance Lab',
+    creatorSlug: 'resonance-lab',
+    creatorRole: 'Acoustic Engineering & Spatial Sound',
+    location: 'Manchester, UK',
+    city: 'Manchester',
+    category: 'Music',
+    categorySlug: 'music',
+    recognition: 'Featured',
+    year: '2026',
+    score: '',
+    imageUrl: '/images/home/work-2.jpg',
+    aspectRatio: 'square',
+    span: 'medium',
+    summary: 'Spatial acoustic diffusers and resonant timber wall panels designed for a Manchester industrial conversion.',
+    description: 'An acoustic architecture study pairing heritage red-brick reverberation profiles with custom CNC-milled English oak baffles, submitted for peer review.',
+    tags: ['Acoustic Design', 'Spatial Sound', 'Manchester', 'Demo Nomination'],
+    clientOrContext: 'Heritage Mill Studio Commission',
+    appreciationCount: 290,
+    publishedAt: '2026-03-11',
+    status: 'nominated',
+  },
+];
+
 export function getAllWorks(): Work[] {
-  return [FEATURED_DISCOVERY_WORK, ...DISCOVERY_WORKS];
+  return [FEATURED_DISCOVERY_WORK, ...DISCOVERY_WORKS, ...DEMO_NOMINEE_WORKS];
+}
+
+export function getNominatedWorks(): Work[] {
+  return getAllWorks().filter((w) => w.status === 'nominated');
+}
+
+export function getAccreditedWorks(): Work[] {
+  return getAllWorks().filter((w) => w.status !== 'nominated');
 }
 
 export function getWorkBySlug(slug: string): Work | undefined {
@@ -393,7 +487,9 @@ export function getWorksByCity(city: string): Work[] {
 
 export function getCuratedWinners(): Work[] {
   return getAllWorks().filter(
-    (w) => w.recognition === 'Category Winner' || w.recognition === "Editor's Selection"
+    (w) =>
+      w.status !== 'nominated' &&
+      (w.recognition === 'Category Winner' || w.recognition === "Editor's Selection")
   );
 }
 

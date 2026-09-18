@@ -43,27 +43,27 @@ export default function Footer() {
           {/* Col 2: Evaluation Links */}
           <div className="md:col-span-3 space-y-3 font-mono text-xs">
             <h4 className="uppercase tracking-widest text-zinc-300 font-medium pb-1">
-              CURATION & EVALUATION
+              CURATION {'&'} EVALUATION
             </h4>
             <ul className="space-y-2.5 text-zinc-500">
               <li>
                 <Link href="/#jury" className="hover:text-white transition-colors">
-                  Jury Members & Standards
+                  Jury Members {'&'} Standards
                 </Link>
               </li>
               <li>
-                <Link href="/#nominate" className="hover:text-white transition-colors">
-                  Nomination Guidelines & Fees
+                <Link href="/submit" className="hover:text-white transition-colors">
+                  Nominate a Talent
                 </Link>
               </li>
               <li>
                 <Link href="/#directory" className="hover:text-white transition-colors">
-                  Annual Book & Directory
+                  Annual Book {'&'} Directory
                 </Link>
               </li>
               <li>
-                <Link href="/#about" className="hover:text-white transition-colors">
-                  Community Guidelines
+                <Link href="/about" className="hover:text-white transition-colors">
+                  About Platform {'&'} Remit
                 </Link>
               </li>
             </ul>

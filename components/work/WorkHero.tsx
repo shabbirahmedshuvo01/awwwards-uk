@@ -44,13 +44,13 @@ export default function WorkHero({ work }: WorkHeroProps) {
         <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-400 pr-2">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse" />
           <span className="uppercase tracking-widest text-[#38bdf8] font-semibold">
-            {work.recognition}
+            {work.status === 'nominated' ? 'NOMINATION • UNDER REVIEW' : work.recognition}
           </span>
         </div>
 
         <Link href={`/categories/${work.categorySlug}`}>
           <Badge
-            variant={isTopTier ? 'accent' : 'dark'}
+            variant={work.status === 'nominated' ? 'dark' : isTopTier ? 'accent' : 'dark'}
             size="sm"
             className="hover:opacity-90 transition-opacity font-mono text-[10px]"
           >
@@ -58,9 +58,15 @@ export default function WorkHero({ work }: WorkHeroProps) {
           </Badge>
         </Link>
 
-        <Badge variant="rating" size="sm" className="font-mono text-[10px]">
-          ★ {work.score}
-        </Badge>
+        {work.status === 'nominated' ? (
+          <Badge variant="dark" size="sm" className="font-mono text-[10px] text-zinc-400">
+            Under Review
+          </Badge>
+        ) : (
+          <Badge variant="rating" size="sm" className="font-mono text-[10px]">
+            ★ {work.score}
+          </Badge>
+        )}
 
         <span className="font-mono text-[11px] text-zinc-500 uppercase tracking-wider">
           Edition {work.year}
