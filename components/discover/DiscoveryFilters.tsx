@@ -43,7 +43,7 @@ export default function DiscoveryFilters({
     selectedSort !== 'featured';
 
   return (
-    <div className="border-b border-zinc-900 bg-[#070709] py-6 sticky top-17.25 z-40 backdrop-blur-md bg-opacity-95">
+    <div className="border-b border-zinc-900 bg-[#070709]/95 py-6 lg:sticky lg:top-[69px] z-40 backdrop-blur-md">
       <Container size="wide" className="space-y-4">
         {/* Main Controls Row */}
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
@@ -144,7 +144,7 @@ export default function DiscoveryFilters({
         </div>
 
         {/* Categories Bar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar pt-1 border-t border-zinc-900/60">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pt-1 border-t border-zinc-900/60">
           <button
             type="button"
             onClick={() => setSelectedCategory('All')}

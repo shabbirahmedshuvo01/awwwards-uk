@@ -8,14 +8,15 @@ interface RelatedWorksProps {
 }
 
 export default function RelatedWorks({ currentWork }: RelatedWorksProps) {
-  // 1. Works in same category excluding currentWork
+  // 1. Works in same category excluding currentWork and unaccredited nominees
   const categoryWorks = getWorksByCategory(currentWork.categorySlug).filter(
-    (w) => w.slug !== currentWork.slug
+    (w) => w.slug !== currentWork.slug && w.status !== 'nominated'
   );
 
-  // 2. Fallback works excluding currentWork and already included items
+  // 2. Fallback works excluding currentWork, nominees, and already included items
   const fallbackWorks = getAllWorks().filter(
     (w) =>
+      w.status !== 'nominated' &&
       w.slug !== currentWork.slug &&
       !categoryWorks.some((cw) => cw.slug === w.slug)
   );
